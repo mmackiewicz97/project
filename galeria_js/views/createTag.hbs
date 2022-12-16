@@ -1,0 +1,17 @@
+{{#if errors}}
+<div class="alert alert-danger" role="alert">
+    <ul>
+        {{#each errors }}
+        <li>{{ this.msg }} </li>
+        {{/each}}
+    </ul>
+</div>
+{{/if}}
+<form action="../tags/create" method="post">
+    <h3 style="text-align: center;"> Dodaj tag </h3>
+    <label for="Tekst">Tekst:</label>
+    <input class="form-control" type="text" id="Tekst" name="Tekst"><br /><br />
+    <div style="text-align: center; padding: 20px">
+        <input class="btn btn-primary btn-lg" type="submit" value="Dodaj">
+    </div>
+</form>

@@ -1,0 +1,8 @@
+<h1> Witaj na stronie galerii! </h1>
+<p> Projekt zaliczeniowy z przedmiotu Web Development 2021/2022 </p>
+<h3> Galeria: </h3>
+<ul>
+    {{# each items }}
+    <li> <b> {{ this.nazwa }} </b> - {{ this.liczba }}</li>
+    {{/each}}
+</ul>

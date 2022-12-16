@@ -1,0 +1,65 @@
+<h1 style="text-align: center;"> Tytuł: {{ item.Tytul }} </h1>
+<div>
+
+</div>
+<div class="card text-center">
+    <img style="margin: auto; width: 30%;" src="{{ item.Sciezka }}/{{ item.NazwaPliku }}.png" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">Opis:</h5>
+        <p class="card-text">{{ item.Opis }}</p>
+        <h5 class="card-title">Data:</h5>
+        <p class="card-text">{{ item.Data }}</p>
+        <h5 class="card-title">Nazwa pliku:</h5>
+        <p class="card-text">{{ item.NazwaPliku }}</p>
+        <h5 class="card-title">Ścieżka:</h5>
+        <p class="card-text">{{ item.Sciezka }}</p>
+        <h5 class="card-title">Rozmiar:</h5>
+        <p class="card-text">{{ item.Rozmiar }}</p>
+        <h5 class="card-title">Widoczność:</h5>
+        <p class="card-text">{{ item.Widocznosc }}</p>
+        <h5 class="card-title">Galeria:</h5>
+        <p class="card-text">{{ gallery.Tytul }} - {{ gallery.Opis }}</p>
+        <h5 class="card-title">Tagi:</h5>
+        <p class="card-text">{{ item.Tagi }}</p>
+        <a href="/pictures" class="btn btn-primary">Zdjęcia</a>
+        <a href="/pictures/update/{{ item.id }}" class="btn btn-success">Edytuj</a>
+        <form action="/pictures/delete" method="post" style="display: inline;">
+            <button class="btn btn-danger" type="submit" name="id" id="{{ item.id }}"
+                value="{{ item.id }}">Usuń</button>
+        </form>
+    </div>
+</div>
+{{# each comments }}
+<figure class="text-center">
+    <blockquote class="blockquote">
+        <p>{{this.Tresc}}</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+        <cite title="Source Title"> {{this.Data }}</cite>
+    </figcaption>
+    <figcaption class="blockquote-footer">
+        Autor: <cite title="Source Title"> {{this.User }} Ocena: {{ this.stars }} </cite>
+    </figcaption>
+</figure>
+{{/each}}
+
+<form action="/comments/add/{{ item.id }}" method="post">
+    <div class="form-group">
+        <label for="User"> Autor: </label>
+        <input class="form-control" type="text" id="User" name="User">
+        <label for="Tresc"> Treść: </label>
+        <input class="form-control" type="text" id="Tresc" name="Tresc">
+        <input class="form-control" type="hidden" id="Zdjecie_ID" name="Zdjecie_ID" value="{{ item.id }}">
+    </div>
+    <div class="rating">
+        <input type="radio" name="rating" value="1" id="rating"><label for="1">1☆</label>
+        <input type="radio" name="rating" value="2" id="rating"><label for="2">2☆</label>
+        <input type="radio" name="rating" value="3" id="rating"><label for="3">3☆</label>
+        <input type="radio" name="rating" value="4" id="rating"><label for="4">4☆</label>
+        <input type="radio" name="rating" value="5" id="rating"><label for="5">5☆</label>
+    </div>
+
+    <div style="text-align: center; padding: 20px">
+        <input class="btn btn-primary btn-lg" type="submit" value="Dodaj komentarz">
+    </div>
+</form>

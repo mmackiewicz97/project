@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "94c91450-ca50-43f9-b824-91b906498698",
+		"name": "Produkty",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/produkty",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produkty"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getProdukt",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/produkty/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produkty",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postProdukt",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nazwa\": \"testProdukt\",\r\n    \"cena\": 15.0,\r\n    \"ilosc\": 3,\r\n    \"producenci\": {\r\n        \"id\": 1\r\n    },\r\n    \"kategorie\":{\r\n        \"id\": 1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/produkty",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produkty"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "putProdukt",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nazwa\": \"innyProdukt\",\r\n    \"cena\": 25.0,\r\n    \"ilosc\": 3,\r\n    \"producenci\": {\r\n        \"id\": 1,\r\n        \"nazwa\": \"zmienionaNazwa\"\r\n    },\r\n    \"kategorie\": {\r\n        \"id\": 1,\r\n        \"nazwa\": \"innaNazwa\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/produkty/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produkty",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteProdukt",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/produkty/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produkty",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,22 @@
+<form action="../update/{{id}}" method="post">
+    <h3 style="text-align: center;"> Edytuj galerię </h3>
+    <div class="form-group">
+        <label for="Tytul">Tytuł:</label>
+        <input class="form-control" type="text" id="Tytul" name="Tytul" value='{{item.Tytul}}'>
+        <label for="Opis">Opis:</label>
+        <input class="form-control" type="text" id="Opis" name="Opis" value='{{item.Opis}}'>
+        <label for="Data">Data:</label>
+        <input class="form-control" type="date" id="Data" name="Data" value='{{ data }}'>
+        <div class="form-check form-switch">
+            <label class="form-check-label" for="Widocznosc">Widoczność:</label>
+            {{#if item.Widocznosc}}
+            <input class="form-check-input" type="checkbox" id="Widocznosc" name="Widocznosc" checked="checked">
+            {{else}}
+            <input class="form-check-input" type="checkbox" id="Widocznosc" name="Widocznosc">
+            {{/if}}
+        </div>
+    </div>
+    <div style="text-align: center; padding: 20px">
+        <input class="btn btn-primary btn-lg" type="submit" value="Zatwierdź">
+    </div>
+</form>

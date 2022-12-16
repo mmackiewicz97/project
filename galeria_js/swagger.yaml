@@ -1,0 +1,536 @@
+---
+swagger: "2.0"
+info:
+  description: "This is a sample server Petstore server.  You can find out more about\
+    \     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net,\
+    \ #swagger](http://swagger.io/irc/).      For this sample, you can use the api\
+    \ key `special-key` to test the authorization     filters."
+  version: "1.0.0"
+  title: "Swagger"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "petstore.swagger.io"
+basePath: "/v2"
+tags:
+- name: "user"
+  description: "Operations about user"
+  externalDocs:
+    description: "Find out more about our store"
+    url: "http://swagger.io"
+schemes:
+- "https"
+- "http"
+paths:
+  /event:
+    post:
+      tags:
+      - "event"
+      summary: "Add a new event to the store"
+      description: ""
+      operationId: "addEvent"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Event object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Event"
+      security:
+      - petstore_auth:
+        - "write:events"
+        - "read:events"
+      responses:
+        "405":
+          description: "Invalid input"
+      x-swagger-router-controller: "Event"
+    put:
+      tags:
+      - "event"
+      summary: "Update an existing event"
+      description: ""
+      operationId: "updateEvent"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Event object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Event"
+      security:
+      - petstore_auth:
+        - "write:events"
+        - "read:events"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Event not found"
+        "405":
+          description: "Validation exception"
+      x-swagger-router-controller: "Event"
+  /event/{eventId}:
+    get:
+      tags:
+      - "event"
+      summary: "Find event by ID"
+      description: "Returns a single event"
+      operationId: "getEventById"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        description: "ID of pet to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      security:
+      - api_key: []
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Event"
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Event not found"
+      x-swagger-router-controller: "Event"
+    post:
+      tags:
+      - "event"
+      summary: "Updates an event in the store with form data"
+      description: ""
+      operationId: "updateEventWithForm"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        description: "ID of event that needs to be updated"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "name"
+        in: "formData"
+        description: "Updated name of the event"
+        required: false
+        type: "string"
+      - name: "status"
+        in: "formData"
+        description: "Updated status of the event"
+        required: false
+        type: "string"
+      security:
+      - petstore_auth:
+        - "write:events"
+        - "read:events"
+      responses:
+        "405":
+          description: "Invalid input"
+      x-swagger-router-controller: "Event"
+    delete:
+      tags:
+      - "event"
+      summary: "Deletes an event"
+      description: ""
+      operationId: "deleteEvent"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "api_key"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "eventId"
+        in: "path"
+        description: "Event id to delete"
+        required: true
+        type: "integer"
+        format: "int64"
+      security:
+      - petstore_auth:
+        - "write:events"
+        - "read:events"
+      responses:
+        "400":
+          description: "Invalid ID supplied"
+        "404":
+          description: "Event not found"
+      x-swagger-router-controller: "Event"
+  /user:
+    post:
+      tags:
+      - "user"
+      summary: "Create user"
+      description: "This can only be done by the logged in user."
+      operationId: "createUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created user object"
+        required: true
+        schema:
+          $ref: "#/definitions/Uzytkownik"
+      responses:
+        default:
+          description: "successful operation"
+      x-swagger-router-controller: "User"
+  /user/createWithArray:
+    post:
+      tags:
+      - "user"
+      summary: "Creates list of users with given input array"
+      description: ""
+      operationId: "createUsersWithArrayInput"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List of user object"
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/Uzytkownik"
+      responses:
+        default:
+          description: "successful operation"
+      x-swagger-router-controller: "User"
+  /user/createWithList:
+    post:
+      tags:
+      - "user"
+      summary: "Creates list of users with given input array"
+      description: ""
+      operationId: "createUsersWithListInput"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "List of user object"
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/Uzytkownik"
+      responses:
+        default:
+          description: "successful operation"
+      x-swagger-router-controller: "User"
+  /user/login:
+    get:
+      tags:
+      - "user"
+      summary: "Logs user into the system"
+      description: ""
+      operationId: "loginUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "query"
+        description: "The user name for login"
+        required: true
+        type: "string"
+      - name: "password"
+        in: "query"
+        description: "The password for login in clear text"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          headers:
+            X-Rate-Limit:
+              type: "integer"
+              format: "int32"
+              description: "calls per hour allowed by the user"
+            X-Expires-After:
+              type: "string"
+              format: "date-time"
+              description: "date in UTC when token expires"
+          schema:
+            type: "string"
+        "400":
+          description: "Invalid username/password supplied"
+      x-swagger-router-controller: "User"
+  /user/logout:
+    get:
+      tags:
+      - "user"
+      summary: "Logs out current logged in user session"
+      description: ""
+      operationId: "logoutUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters: []
+      responses:
+        default:
+          description: "successful operation"
+      x-swagger-router-controller: "User"
+  /user/{username}:
+    get:
+      tags:
+      - "user"
+      summary: "Get user by user name"
+      description: ""
+      operationId: "getUserByName"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        description: "The name that needs to be fetched. Use user1 for testing. "
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Uzytkownik"
+        "400":
+          description: "Invalid username supplied"
+        "404":
+          description: "User not found"
+      x-swagger-router-controller: "User"
+    put:
+      tags:
+      - "user"
+      summary: "Updated user"
+      description: "This can only be done by the logged in user."
+      operationId: "updateUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        description: "name that need to be updated"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Updated user object"
+        required: true
+        schema:
+          $ref: "#/definitions/Uzytkownik"
+      responses:
+        "400":
+          description: "Invalid user supplied"
+        "404":
+          description: "User not found"
+      x-swagger-router-controller: "User"
+    delete:
+      tags:
+      - "user"
+      summary: "Delete user"
+      description: "This can only be done by the logged in user."
+      operationId: "deleteUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        description: "The name that needs to be deleted"
+        required: true
+        type: "string"
+      responses:
+        "400":
+          description: "Invalid username supplied"
+        "404":
+          description: "User not found"
+      x-swagger-router-controller: "User"
+securityDefinitions:
+  petstore_auth:
+    type: "oauth2"
+    authorizationUrl: "http://petstore.swagger.io/oauth/dialog"
+    flow: "implicit"
+    scopes:
+      write:pets: "modify pets in your account"
+      read:pets: "read your pets"
+      write:events: "modify events in your account"
+      read:events: "read your events"
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+definitions:
+  Sesja:
+    required:
+      - "Id"
+      - "Token"
+      - "Waznosc"
+    properties:
+      Id:
+        type: "string"
+      Token:
+        type: "string"
+      Waznosc:
+        type: "string"
+        format: "date-time"
+  Uzytkownik:
+    type: "object"
+    properties:
+      Id:
+        type: "integer"
+        format: "int64"
+      Imie:
+        type: "string"
+      Nazwisko:
+        type: "string"
+      Login:
+        type: "string"
+      Haslo:
+        type: "string"
+        format: "password"
+      Email:
+        type: "string"
+        format: "email"
+    xml:
+      name: "Uzytkownik"
+  Administrator:
+    type: "object"
+    properties:
+      Prawa:
+        type: "boolean"
+    xml:
+      name: "Administrator"
+  Galeria:
+    type: "object"
+    properties:
+      Id:
+        type: "integer"
+        format: "int64"
+      Tytul:
+        type: "string"
+      Opis:
+        type: "string"
+      Data:
+        type: "string"
+        format: "date-time"
+      Widocznosc:
+        type: "boolean"
+    xml:
+      name: "Galeria"
+  Tag:
+    type: "object"
+    properties:
+      Id:
+        type: "integer"
+        format: "int64"
+      Tekst:
+        type: "string"
+    xml:
+      name: "Tag"
+  Obraz:
+    type: "object"
+    properties:
+      Id:
+        type: "integer"
+        format: "int64"
+      Tytul:
+        type: "string"
+      Opis:
+        type: "string"
+      Data:
+        type: "string"
+        format: "date-time"
+      NazwaPliku:
+        type: "string"
+      Sciezka:
+        type: "string"
+      Rozmiar:
+        type: "number"
+        format: "float"
+      Widocznosc:
+        type: "boolean"
+    xml:
+      name: "Obraz"
+  Miniatura:
+    type: "object"
+    properties:
+      Typ:
+        type: "string"
+  Komentarz:
+    type: "object"
+    properties:
+      Id:
+        type: "integer"
+        format: "int64"
+      Tresc:
+        type: "string"
+      Data:
+        type: "string"
+        format: "date-time"
+  Event:
+    type: "object"
+    required:
+    - "name"
+    - "date"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+        example: "example event"
+      date:
+        type: "string"
+        format: "date"
+        example: "2021-10-26"
+    xml:
+      name: "Event"
+    example:
+      name: "example event"
+      id: 0
+      date: "2021-10-26"
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      type:
+        type: "string"
+      message:
+        type: "string"
+    example:
+      code: 0
+      type: "type"
+      message: "message"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

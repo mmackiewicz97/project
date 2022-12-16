@@ -1,0 +1,27 @@
+{{#if errors}}
+<div class="alert alert-danger" role="alert">
+    <ul>
+        {{#each errors }}
+        <li>{{ this.msg }} </li>
+        {{/each}}
+    </ul>
+</div>
+{{/if}}
+<form action="../galleries/create" method="post">
+    <h3 style="text-align: center;"> Dodaj nową galerię </h3>
+    <div class="form-group">
+        <label for="Tytul">Tytuł:</label>
+        <input class="form-control" type="text" id="Tytul" name="Tytul">
+        <label for="Opis">Opis:</label>
+        <input class="form-control" type="text" id="Opis" name="Opis">
+        <label for="Data">Data:</label>
+        <input class="form-control" type="date" id="Data" name="Data">
+        <div class="form-check form-switch">
+            <label for="Widocznosc">Widoczność:</label>
+            <input class="form-check-input" type="checkbox" checked="checked" id="Widocznosc" name="Widocznosc">
+        </div>
+    </div>
+    <div style="text-align: center; padding: 20px">
+        <input class="btn btn-primary btn-lg" type="submit" value="Dodaj">
+    </div>
+</form>

@@ -1,0 +1,28 @@
+= Frameworki Biznesowe Sklep - documentation
+
+= KategorieController
+== GET getCategories() http://localhost:8080/kategorie
+.request
+include::{snippets}/getCategories/http-request.adoc[]
+.response
+include::{snippets}/getCategories/http-response.adoc[]
+== POST addCategory() http://localhost:8080/kategorie
+.request
+include::{snippets}/addCategory/http-request.adoc[]
+.response
+include::{snippets}/addCategory/http-response.adoc[]
+== GET getCategoryById(int id) http://localhost:8080/kategorie/{id}
+.request
+include::{snippets}/getCategoryById/http-request.adoc[]
+.response
+include::{snippets}/getCategoryById/http-response.adoc[]
+== PUT updateCategory(int id) http://localhost:8080/kategorie/{id}
+.request
+include::{snippets}/updateCategory/http-request.adoc[]
+.response
+include::{snippets}/updateCategory/http-response.adoc[]
+== DELETE deleteCategory(int id) http://localhost:8080/kategorie/{id}
+.request
+include::{snippets}/deleteCategory/http-request.adoc[]
+.response
+include::{snippets}/deleteCategory/http-response.adoc[]

@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-sm">
+        <h3>Login</h3>
+    </div>
+    <div class="col-sm">
+        <h3>Imię</h3>
+    </div>
+    <div class="col-sm">
+        <h3>Nazwisko</h3>
+    </div>
+    <div class="col-sm">
+        <h3>Email</h3>
+    </div>
+    <div class="col-sm">
+        <h3>Rola</h3>
+    </div>
+</div>
+{{# each users }}
+<div class="row">
+    <div class="col-sm">{{this.Login}} </div>
+    <div class="col-sm">{{this.Imie}}</div>
+    <div class="col-sm">{{this.Nazwisko}}</div>
+    <div class="col-sm">{{this.Email}}</div>
+    <div class="col-sm">
+        <form action="/users/update/{{this.id}}" method="post">
+            {{#if (or (eq this.Role "ADMIN"))}}
+            <select name="Role" id="Role" class="form-control">
+                <option value="USER">Użytkownik</option>
+                <option value="ADMIN" selected>Administrator</option>
+            </select>
+            {{else}}
+            <select name="Role" id="Role" class="form-control">
+                <option value="USER" selected>Użytkownik</option>
+                <option value="ADMIN">Administrator</option>
+            </select>
+            {{/if}}
+            <button class="btn btn-primary" type="submit">Zmień rolę</button>
+        </form>
+        <form action="/users/delete" method="post">
+            <button class="btn btn-danger" type="submit" name="id" id="{{ this.id }}" value="{{ this.id }}">Usuń
+                użytkownika</button>
+        </form>
+    </div>
+</div>
+{{/each}}

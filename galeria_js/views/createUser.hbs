@@ -1,0 +1,25 @@
+{{#if errors}}
+<div class="alert alert-danger" role="alert">
+  <ul>
+    {{#each errors }}
+    <li>{{ this.msg }} </li>
+    {{/each}}
+  </ul>
+</div>
+{{/if}}
+<form action="../users/register" method="post">
+  <h1 style="text-align: center;"> Zarejestruj </h1>
+  <label for="Imie">Imię:</label>
+  <input class="form-control" type="text" id="Imie" name="Imie">
+  <label for="Nazwisko">Nazwisko:</label>
+  <input class="form-control" type="text" id="Nazwisko" name="Nazwisko">
+  <label for="Login">Login:</label>
+  <input class="form-control" type="text" id="Login" name="Login">
+  <label for="Haslo">Hasło:</label>
+  <input class="form-control" type="password" id="Haslo" name="Haslo">
+  <label for="Email">Email:</label>
+  <input class="form-control" type="text" id="Email" name="Email">
+  <div style="text-align: center; padding: 20px">
+    <input class="btn btn-primary btn-lg" type="submit" value="Dodaj">
+  </div>
+</form>

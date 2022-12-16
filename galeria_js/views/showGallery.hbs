@@ -1,0 +1,17 @@
+<h1 style="text-align: center;"> Galeria: {{ item.Tytul }} </h1>
+<div class="card text-center">
+    <div class="card-body">
+        <h5 class="card-title">Opis:</h5>
+        <p class="card-text">{{ item.Opis }}</p>
+        <h5 class="card-title">Data:</h5>
+        <p class="card-text">{{ item.Data }}</p>
+        <h5 class="card-title">Widoczność:</h5>
+        <p class="card-text">{{ item.Widocznosc }}</p>
+        <a href="/galleries" class="btn btn-primary">Galeria</a>
+        <a href="/galleries/update/{{ item.id }}" class="btn btn-success">Edytuj</a>
+        <form action="/galleries/delete" method="post" style="display: inline;">
+            <button class="btn btn-danger" type="submit" name="id" id="{{ item.id }}"
+                value="{{ item.id }}">Usuń</button>
+        </form>
+    </div>
+</div>

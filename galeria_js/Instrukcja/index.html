@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Galeria</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar-->
+        <div class="border-end bg-white" id="sidebar-wrapper" style="position: fixed;">
+            <div class="sidebar-heading border-bottom bg-light">Galeria</div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#stronaglowna">Strona
+                    główna</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                    href="#rejestracja">Rejestracja</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                    href="#logowanie">Logowanie</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#zdjecia">Zdjęcia</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#galerie">Galerie</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#tagi">Tagi</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                    href="#admin">Administrator</a>
+            </div>
+        </div>
+        <!-- Page content wrapper-->
+        <div id="page-content-wrapper" style="margin-left: 300px;">
+
+            <!-- Page content-->
+            <div class="container-fluid">
+                <h1 class="mt-4" id="stronaglowna">Strona główna</h1>
+                <p><code>https://127.0.0.1:8000</code></p>
+                <img src="assets/index.png" width="80%">
+                <p>Na stronie głównej przedstawione są statystyki dotyczące galerii. </p>
+                <h1 id="rejestracja">Rejestracja</h1>
+                <p><code>https://127.0.0.1:8000/user/register</code></p>
+                <img src="assets/rejestracja.png" width="80%">
+                <p>Formularz rejestracji</p>
+                <img src="assets/rejestracja2.png" width="80%">
+                <p>Formularz rejestracji z błędnie wypełnionymi polami</p>
+                <img src="assets/dodanouzytkownika.png" width="80%">
+                <p>Strona dodania użytkownika</p>
+
+                <h1 id="logowanie">Logowanie</h1>
+                <p><code>https://127.0.0.1:8000/users/login</code></p>
+                <h5>Użytkownik</h5>
+                <p>Wylogowywanie: <code>https://127.0.0.1:8000/users/logout</code></p>
+                <img src="assets/navuser.png" width="80%">
+                <p>Navbar użytkownika</p>
+                <h5>Administrator</h5>
+                <img src="assets/navadmin.png" width="80%">
+                <p>Navbar administratora z dodatkowymi funkcjonalnościami (komentarze, użytkownicy)</p>
+
+                <h1 id="zdjecia">Zdjęcia</h1>
+                <p><code>https://127.0.0.1:8000/pictures</code></p>
+                <img src="assets/zdjecia.png" width="80%">
+                <p>Tutaj wyświetlone są wszystkie dodane zdjęcia. Przy zdjęciu jest liczba komentarzy oraz średnia
+                    wystawionych ocen.</p>
+                <h5>Dodawanie zdjęcia</h5>
+                <p><code>https://127.0.0.1:8000/pictures/create</code></p>
+                <img src="assets/dodajzdjecie.png" width="80%">
+                <p>Dodawanie zdjęcia jest walidowane. W przypadku źle wypełnionych pól wyświetlają się błędy. Podczas
+                    dodawania zdjęcia można przypisać zdjęcie do odpowiedniej galerii oraz wybrać tagi.</p>
+                <h5>Szczegóły zdjęcia</h5>
+                <p><code>https://127.0.0.1:8000/pictures/id/61c9abe100e54be4bafcd00f</code></p>
+                <img src="assets/zdjeciaszczegol.png" width="80%">
+                <p>Szczegóły zdjęcia dodatkowo znajduje się sekcja komentarzy oraz panel dodawania komentarza.</p>
+                <p>Komentarz przesyłany jest na adres <code>https://127.0.0.1:8000/comments/add/:id</code></p>
+                <img src="assets/brakdostepu.png" width="50%">
+                <p>Niezalogowany użytkownik nie ma dostępu do dodania, edycji oraz usunięcia zdjęcia.</p>
+                <h5>Edycja zdjęcia</h5>
+                <p><code>https://127.0.0.1:8000/pictures/update/61c9abe100e54be4bafcd00f</code></p>
+                <img src="assets/edycjazdjecia.png" width="80%">
+                <h5>Usuwanie zdjęcia</h5>
+                <p><code>https://127.0.0.1:8000/pictures/delete</code></p>
+                <p>Usuwanie zdjęcia odbywa się poprzez przesłanie <code>id</code> na podany url.</p>
+
+                <h1 id="galerie">Galerie</h1>
+                <p><code>https://127.0.0.1:8000/galleries</code></p>
+                <img src="assets/galerie.png" width="80%">
+                <h5>Dodawanie galerii</h5>
+                <p><code>https://127.0.0.1:8000/galleries/create</code></p>
+                <img src="assets/dodajgalerie.png" width="80%">
+                <p>Dodawanie galerii jest walidowane. W przypadku źle wypełnionych pól wyświetlają się błędy.</p>
+                <h5>Szczegóły galerii</h5>
+                <p><code>https://127.0.0.1:8000/galleries/id/61d58307c8d3e935a40f2c50</code></p>
+                <img src="assets/galeriaszczegol.png" width="80%">
+                <p>Niezalogowany użytkownik nie ma dostępu do dodania, edycji oraz usunięcia galerii.</p>
+                <h5>Edycja galerii</h5>
+                <p><code>https://127.0.0.1:8000/galleries/update/61d58307c8d3e935a40f2c50</code></p>
+                <img src="assets/edycjagaleria.png" width="80%">
+                <h5>Zdjęcia galerii</h5>
+                <p><code>http://localhost:8000/galleries/list/61d58307c8d3e935a40f2c50</code></p>
+                <img src="assets/listagaleria.png" width="80%">
+                <p>Strona wyświetla zdjęcia przypisane do danej galerii.</p>
+                <h5>Usuwanie galerii</h5>
+                <p><code>https://127.0.0.1:8000/galleries/delete</code></p>
+                <p>Usuwanie galerii odbywa się poprzez przesłanie <code>id</code> na podany url.</p>
+
+                <h1 id="tagi">Tagi</h1>
+                <p><code>https://127.0.0.1:8000/tags</code></p>
+                <img src="assets/tagi.png" width="80%">
+                <h5>Dodawanie tagu</h5>
+                <p><code>https://127.0.0.1:8000/tags/create</code></p>
+                <img src="assets/dodajtag.png" width="80%">
+                <p>Dodawanie tagu jest walidowane. W przypadku źle wypełnionych pól wyświetlają się błędy.</p>
+                <h5>Szczegóły tagu</h5>
+                <p><code>https://127.0.0.1:8000/tags/id/61f94a79597032fbf9e6f269</code></p>
+                <img src="assets/tagszczegol.png" width="80%">
+                <p>Niezalogowany użytkownik nie ma dostępu do dodania, edycji oraz usunięcia tagu.</p>
+                <h5>Edycja tagu</h5>
+                <p><code>https://127.0.0.1:8000/tags/update/61f94a79597032fbf9e6f269</code></p>
+                <img src="assets/edycjatag.png" width="80%">
+                <h5>Usuwanie tagu</h5>
+                <p><code>https://127.0.0.1:8000/tags/delete</code></p>
+                <p>Usuwanie tagu odbywa się poprzez przesłanie <code>id</code> na podany url.</p>
+
+                <h1 id="admin">Panel Administratora</h1>
+                <h5>Zarządzanie użytkownikami</h5>
+                <p><code>https://127.0.0.1:8000/users</code></p>
+                <img src="assets/uzytkownicy.png" width="80%">
+                <p>Administrator ma możliwość zmiany roli użytkownika na <code>USER</code> lub <code>ADMIN</code>.</p>
+                <p>Może też usuwać użytkowników.</p>
+                <h5>Zarządzanie komentarzami</h5>
+                <p><code>https://127.0.0.1:8000/comments</code></p>
+                <img src="assets/komentarze.png" width="80%">
+                <p>Administrator ma możliwość podglądania wszystkich komentarzy oraz usuwania ich.</p>
+
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

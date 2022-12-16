@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/spring-security.xsd">
+    <http auto-config="true">
+        <form-login />
+        <logout invalidate-session="true" />
+    </http>
+    <beans:bean id="dataSource"
+                class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <beans:property name="url" value="jdbc:mysql://localhost/jpa2021?serverTimezone=Europe/Warsaw"/>
+        <beans:property name="username" value="jpa2021" />
+        <beans:property name="password" value="jpa2021" />
+    </beans:bean>
+    <beans:bean id="bcrypt"
+                class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider>
+            <password-encoder ref="bcrypt"/>
+            <jdbc-user-service id="jdbcUserService" data-source-ref="dataSource"
+                               users-by-username-query="select username, password, enabled as enabled from users where username=?"
+                               authorities-by-username-query="select u.username, r.role from users u, roles r, user_roles ur where u.id=ur.user_id and r.id=ur.role_id and u.username=?"
+            />
+        </authentication-provider>
+    </authentication-manager>
+</beans:beans>

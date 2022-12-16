@@ -1,0 +1,28 @@
+<h1 style="text-align: center;"> {{ title }} </h1>
+<div class="row">
+    {{# each items }}
+    <div class="col-sm">
+        <h3>Tytuł: {{this.Tytul }}</h3>
+        <h5>Opis: {{ this.Opis }} </h5>
+        <figcaption class="figure-caption text-left">
+            Data: {{ this.Data }}
+        </figcaption>
+        <figcaption class="figure-caption text-left">
+            Widoczność: {{ this.Widocznosc }}
+        </figcaption>
+        <a href="/galleries/list/{{ this.id }}"><button class="btn btn-secondary">Zdjęcia</button></a>
+        <a href="/galleries/id/{{ this.id }}"><button class="btn btn-primary">Szczegóły</button></a>
+        <a href="/galleries/update/{{ this.id }}"><button class="btn btn-success">Edytuj</button></a>
+        <form action="/galleries/delete" method="post" style="display: inline;">
+            <button class="btn btn-danger" type="submit" name="id" id="{{ this.id }}"
+                value="{{ this.id }}">Usuń</button>
+        </form>
+    </div>
+    {{/each}}
+
+</div>
+<div style="text-align: center; padding: 20px">
+    <form action="/galleries/create" method="get">
+        <button class="btn btn-dark" type="submit" class="btn-link">Dodaj galerię</button>
+    </form>
+</div>

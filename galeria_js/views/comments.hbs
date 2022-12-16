@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-sm">
+        <h3>Link</h3>
+    </div>
+    <div class="col-sm">
+        <h3>Użytkownik</h3>
+    </div>
+    <div class="col-sm">
+        <h3>Ocena</h3>
+    </div>
+    <div class="col-sm">
+        <h3>Treść</h3>
+    </div>
+    <div class="col-sm"></div>
+</div>
+{{# each items }}
+<div class="row" style="padding-bottom: 10px;">
+    <div class="col-sm"><a href="/pictures/id/{{this.Zdjecie_ID}}" class="btn btn-primary">Zdjęcie</a></div>
+    <div class="col-sm">{{this.User}}</div>
+    <div class="col-sm">{{this.stars}}</div>
+    <div class="col-sm">{{this.Tresc}}</div>
+    <div class="col-sm">
+        <form action="/comments/delete" method="post">
+            <button class="btn btn-danger" type="submit" name="id" id="{{ this.id }}" value="{{ this.id }}">Usuń
+                komentarz</button>
+        </form>
+    </div>
+</div>
+{{/each}}

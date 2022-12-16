@@ -1,0 +1,30 @@
+{
+  "name": "galeria",
+  "version": "1.0.0",
+  "description": "program zaliczeniowy",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@212.182.24.105:mateusz.mackiewicz/webdev21_22.git"
+  },
+  "author": "Mateusz M",
+  "license": "MIT",
+  "dependencies": {
+    "alert": "^5.0.10",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^6.0.2",
+    "express-validator": "^6.14.0",
+    "hbs": "^4.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.14",
+    "node-localstorage": "^2.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

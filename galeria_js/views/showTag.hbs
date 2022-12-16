@@ -1,0 +1,13 @@
+<h1 style="text-align: center;"> Tag </h1>
+<div class="card text-center">
+    <div class="card-body">
+        <h5 class="card-title">Tekst:</h5>
+        <p class="card-text">{{ item.Tekst }}</p>
+        <a href="/tags" class="btn btn-primary">Tagi</a>
+        <a href="/tags/update/{{ item.id }}" class="btn btn-success">Edytuj</a>
+        <form action="/tags/delete" method="post" style="display: inline;">
+            <button class="btn btn-danger" type="submit" name="id" id="{{ item.id }}"
+                value="{{ item.id }}">Usuń</button>
+        </form>
+    </div>
+</div>
