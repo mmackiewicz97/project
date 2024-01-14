@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} - FlaskApp</title>
+    <style>
+        .ad{
+        padding: 10px 20px 0px 20px;
+        width: 90vw;
+        clear: left;
+    }
+    img {
+        float: left;
+        padding-right: 25px;
+    }
+    .a {
+        padding-bottom: 10px;
+    }
+    .price{
+        font-weight: bold;
+        font-size: larger;
+        float: right;
+    }
+    .oldprice{
+        color: #ff0000;
+        font-weight: bold;
+        float: right;
+    }
+    .city{
+        clear: left;
+        font-weight: bold;
+    }
+    .bar{
+        padding-bottom: 5px;
+    }
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0px;
+        margin: 0px;
+    }
+    li {
+        list-style: none;
+        margin: 0px 8px 0px 0px;
+        border: 1px solid rgb(64, 99, 103);
+        border-radius: 4px;
+        padding: 0px 5px;
+    }
+    nav {
+            font-size: 1em;
+            height: 30px;
+            width: 100vw;
+            text-decoration: none;
+            position: sticky;
+            display: flex;
+            justify-content: right;
+            top: 0;
+            list-style-type: none;
+            background-color: #444444;
+        }
+    .btn {
+        top: 30px;
+        margin-left: 91vw;
+        height: 40px;
+        position: fixed;
+        float: right;
+    }
+    nav a {
+        color: #fff;
+    }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+
+            </li>
+            <li>
+                 <a href="/">Index</a>
+            </li>
+            <li>
+               <a href="/now">Now</a>
+            </li>
+            <li>
+               <a href="/new">New</a>
+            </li>
+            <li>
+                 <a href="/unused">Unused</a>
+            </li>
+            <li>
+               <a href="/select">Select</a>
+            </li>
+
+        </ul>
+    </nav>
+    <form action="/select" method="post">
+     {% for (div, city, distance) in divs %}
+
+    <div class="ad">
+        {% set delta = today - div.created %}
+        <div class="bar">Wystawiono {{ delta }}. {{ div.created }} ID {{ div.div_id }}</div>
+        <img src={{ div.photo }};s=240x240>
+        <div class="a"><a href={{ div.url }}>{{ div.title }}</a></div>
+        <div class="desc">{{ div.desc }}</div>
+        <div class="price">
+            <a href="/del/{{ div.div_id }}">del</a>
+            <input type="checkbox" name="select" value={{ div.div_id }}> {{ div.price }} zł</div>
+        <ul><li><p>Rok: {{ div.year }}</p></li>
+            <li><p>{{ div.milage }} km</p></li>
+            <li><p>{{ div.power }} KM</p></li>
+            <li><p>{{ div.enginesize }} cm³</p></li>
+            <li><p>{{ div.petrol }}</p></li>
+            <li><p>{{ div.car_body }}</p></li>
+            <li><p>{{ div.condition }}</p></li>
+            <li><p>{{ div.transmission }}</p></li>
+            <li><p>{{ city }}</p></li>
+            <li><p>{{ '%0.2f'| format(distance|float) }} km</p></li>
+        </ul>
+        <div class="oldprice">{{ div.old_price }}</div>
+        <div class="city">{{ loop.index }} {{ div.saved }}</div></div>
+      {% endfor %}
+    <button type="submit" class="btn">Save</button>
+     </form>
+{#    <div class="content">#}
+{#        {% block content %} {% endblock %}#}
+{#    </div>#}
+</body>
+</html>
